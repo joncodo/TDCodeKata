@@ -13,6 +13,19 @@ bundle install
 rake
 ```
 
+## Next Steps
+
+When you run `rake` right now, you will get some linting errors due to method and file length. The best place to start if you want to improve this project is to NOT disable the linter but instead to break the methods down into smaller chunks. One good way to do this might be to extract file validation to its own class and to break up some of the larger methods into smaller chunks. 
+
+If you want to use this code not only in tests but with "real" account numbers, you can run something like this in a ruby file:
+
+```
+require '../app/ocr'
+
+ocr = Ocr.new "#{SAMPLE_FILE_PATH}/your_account_numbers_file.txt"
+puts ocr.extract_numbers
+```
+
 ## Research
 
 Looking for solutions online...
