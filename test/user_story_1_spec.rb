@@ -12,6 +12,13 @@ describe Ocr do
     @ocr = Ocr.new "#{SAMPLE_FILE_PATH}/many_account_numbers.txt"
   end
 
+  describe 'extract_numbers' do
+    it 'returns an array of numbers' do
+      skip 'need to finish this part'
+      assert_equal 44, @ocr.extract_numbers
+    end
+  end
+
   describe 'line_count' do
     it 'gets the number of lines in a file' do
       assert_equal 44, @ocr.line_count
