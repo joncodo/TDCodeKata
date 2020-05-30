@@ -13,7 +13,22 @@ bundle install
 rake
 ```
 
-### Potential errors I came across while setting up the project
+## Research
+
+Looking for solutions online...
+
+Looks like the original problem comes from here: https://codingdojo.org/kata/BankOCR/
+
+Solution by someone else and the critique of others: https://codereview.stackexchange.com/questions/128513/solution-for-the-bankocr-kata
+
+OCR = Optical Character Recognition
+
+## Tasks
+
+- [ x ] Set up linter and basic test
+- [ x ] run the tests and linter with `rake`
+
+## Potential errors I came across while setting up the project
 
 ERROR:
 
@@ -30,17 +45,3 @@ You need to get permissions on the ruby directory. NOTE: (You will likely need t
 ```
 sudo chown $USER /Library/Ruby/Gems/2.3.0
 ```
-
-## Research
-
-Looking for solutions online...
-
-Looks like the original problem comes from here: https://codingdojo.org/kata/BankOCR/
-
-Solution by someone else and the critique of others: https://codereview.stackexchange.com/questions/128513/solution-for-the-bankocr-kata
-
-OCR = Optical Character Recognition
-
-## Tasks
-
-- Set up linter and basic test

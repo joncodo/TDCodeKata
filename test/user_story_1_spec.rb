@@ -1,28 +1,50 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require '../app/bank_ocr'
+require '../app/ocr'
 
 LINE_LENGTH = 27
 LINES_PER_CHARACTER = 4
+SAMPLE_FILE_PATH = 'test/sample_data'
 
-describe OCR do
+describe Ocr do
   before do
-    @ocr = OCR.new 'abd123'
+    @ocr = Ocr.new "#{SAMPLE_FILE_PATH}/many_account_numbers.txt"
   end
 
-  describe 'sample test' do
-    it 'should have at least one test pass' do
-      assert_equal true, true
+  describe 'line_count' do
+    it 'gets the number of lines in a file' do
+      assert_equal 44, @ocr.line_count
     end
   end
 
-  describe 'when reading a file' do
-    it 'gets all the account numbers in an array' do
-      skip 'test this later'
+  describe 'valid_line_count?' do
+    it 'gets the number of lines in a file' do
+      assert_equal true, @ocr.valid_line_count?
+
+      bad_ocr = Ocr.new "#{SAMPLE_FILE_PATH}/invalid_lines.txt"
+      assert_equal false, bad_ocr.valid_line_count?
     end
-    it 'makes sure all the data is in the expected format' do
-      skip 'test this later'
+  end
+
+  describe 'valid_character_count?' do
+    it 'makes sure each line in the file has the correct number of characters' do
+      assert_equal true, @ocr.valid_character_count?
+
+      bad_ocr = Ocr.new "#{SAMPLE_FILE_PATH}/invalid_character_count.txt"
+      assert_equal false, bad_ocr.valid_character_count?
+    end
+  end
+
+  describe 'valid?' do
+    it 'makes sure the file is valid' do
+      assert_equal true, @ocr.valid?
+
+      bad_ocr = Ocr.new "#{SAMPLE_FILE_PATH}/invalid_lines.txt"
+      assert_equal false, bad_ocr.valid?
+
+      bad_ocr2 = Ocr.new "#{SAMPLE_FILE_PATH}/invalid_character_count.txt"
+      assert_equal false, bad_ocr2.valid?
     end
   end
 end
