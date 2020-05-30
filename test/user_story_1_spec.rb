@@ -14,8 +14,11 @@ describe Ocr do
 
   describe 'extract_numbers' do
     it 'returns an array of numbers' do
-      skip 'need to finish this part'
-      assert_equal 44, @ocr.extract_numbers
+      single_ocr = Ocr.new "#{SAMPLE_FILE_PATH}/single_account_number.txt"
+      assert_equal ['123456789'], single_ocr.extract_numbers
+
+      expected = ['000000000', '111111111', '222222222', '333333333', '444444444', '555555555', '666666666', '777777777', '888888888', '999999999', '123456789']
+      assert_equal expected, @ocr.extract_numbers
     end
   end
 
